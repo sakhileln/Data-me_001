@@ -1,12 +1,14 @@
 # TODO: Implement the following functions based on the descriptions.
 
+
 def reverse_list(lst):
     """
     Reverses the given list.
     :param lst: List of integers.
     :return: A list with elements in reverse order.
     """
-    pass  # Implement this
+    return lst[::-1]
+
 
 def count_occurrences(lst, element):
     """
@@ -15,7 +17,8 @@ def count_occurrences(lst, element):
     :param element: Element to count.
     :return: Integer count of occurrences.
     """
-    pass  # Implement this
+    return lst.count(element)
+
 
 def get_keys_with_value(dct, value):
     """
@@ -24,7 +27,8 @@ def get_keys_with_value(dct, value):
     :param value: Value to find.
     :return: List of keys.
     """
-    pass  # Implement this
+    return [key for key, val in dct.items() if val == value]
+
 
 def merge_sorted_lists(lst1, lst2):
     """
@@ -33,7 +37,9 @@ def merge_sorted_lists(lst1, lst2):
     :param lst2: Second sorted list.
     :return: Merged sorted list.
     """
-    pass  # Implement this
+    new_lst = lst1 + lst2
+    return sorted(new_lst)
+
 
 def find_second_largest(numbers):
     """
@@ -41,21 +47,35 @@ def find_second_largest(numbers):
     :param numbers: List of integers.
     :return: The second largest integer.
     """
-    pass  # Implement this
+    if len(list(set(numbers))) <= 1:
+        return None 
+    mx = max(numbers)
+    idx = numbers.index(mx)
+    numbers.pop(idx)
+    return max(numbers)
+
 
 def is_anagram(str1, str2):
     """
     Checks if two strings are anagrams.
-    
+
     An anagram is a word or phrase formed by rearranging the letters of another,
     using all the original letters exactly once. For example, "listen" and "silent"
     are anagrams because they use the same letters in a different order.
-    
+
     :param str1: First string.
     :param str2: Second string.
     :return: True if the strings are anagrams, False otherwise.
     """
-    pass  # Implement this
+    count = 0
+    if len(str1) == len(str2):
+        for ch in str1:
+            if ch in str2:
+                count += 1
+    if count == len(str1):
+        return True
+    return False
+
 
 
 def flatten_list(nested_list):
@@ -64,7 +84,11 @@ def flatten_list(nested_list):
     :param nested_list: List of lists.
     :return: A flat list with all elements.
     """
-    pass  # Implement this
+    nw_lst = []
+    for lt in nested_list:
+        for elem in lt:
+            nw_lst.append(elem)
+    return nw_lst
 
 
 def remove_duplicates(lst):
@@ -73,7 +97,8 @@ def remove_duplicates(lst):
     :param lst: List of elements.
     :return: List without duplicates.
     """
-    pass  # Implement this
+    return list(set(lst))
+
 
 def find_common_elements(lst1, lst2):
     """
@@ -82,4 +107,5 @@ def find_common_elements(lst1, lst2):
     :param lst2: Second list.
     :return: List of common elements.
     """
-    pass  # Implement this
+    cm_set = set(lst1) & set(lst2)
+    return list(cm_set)
